@@ -3,6 +3,33 @@ canvas {
     display: block;
     margin: auto;
     border: 1px solid #fff;
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
+}
+.score {
+    font-family: bungee spice;
+    margin-left: 230px;
+}
+.target {
+    font-family: bungee spice;
+    margin-left: 230px;
+    font-size: 10px;
+}
+html {
+    background-image: url(src/background2.webp);
+    background-size: cover;
+}
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 10px;
+
+}
+.previous-results {
+    font-family: bungee spice;
+    font-size: 10px;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    white-space: pre-line;
 }
