@@ -1,6 +1,7 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let score = document.querySelector(".score");
+const reset = document.querySelector('.reset')
 let scoreCount = 0;
 const gridSize = 10;
 canvas.width = 200;
@@ -9,6 +10,7 @@ const squareAmount = canvas.width / gridSize;
 let previousResults = document.querySelector('.previous-results');
 let stringResults = localStorage.getItem('statistic');
 let results;
+
 
 
 if (stringResults) {
@@ -116,7 +118,20 @@ function endGame() {
 
     localStorage.setItem('statistic', JSON.stringify(results));
 }
-previousResults.innerHTML = `Previous results: <br>${results[0]} <br>${results[1]}<br>${results[2]}<br>${results[3]}<br>${results[4]}<br>${results[5]}<br>${results[6]}<br>${results[7]}<br>${results[8]}<br>${results[9]}`;
+previousResults.innerHTML = `Previous results: `;
+results.forEach(score => {
+    previousResults.innerHTML += '<br> ' + score;
+})
+
+reset.addEventListener('click', resetGame);
+function resetGame() {
+    scoreCount = 0;
+    snake = [{ x: 10, y: 10 }];
+    moveDirection = { x: 1, y: 0 };
+    item = { x: 5, y: 5 };
+    game();
+    console.log('reset')
+}
 
 window.addEventListener('keydown', action => {
     clearInterval(interval);
@@ -140,8 +155,8 @@ window.addEventListener('keydown', action => {
             break;
     }
     progress();
-    interval = setInterval(game, 300);
+    interval = setInterval(game, 200);
 });
 
 drawFood();
-let interval = setInterval(game, 300);
+let interval = setInterval(game, 200);
