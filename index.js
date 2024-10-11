@@ -118,10 +118,12 @@ function endGame() {
 
     localStorage.setItem('statistic', JSON.stringify(results));
 }
-previousResults.innerHTML = `Previous results: `;
-results.forEach(score => {
+function resultsHistory() {
+    previousResults.innerHTML = `Previous results: `;
+    results.forEach(score => {
     previousResults.innerHTML += '<br> ' + score;
-})
+    })
+}
 
 reset.addEventListener('click', resetGame);
 function resetGame() {
@@ -130,8 +132,8 @@ function resetGame() {
     moveDirection = { x: 1, y: 0 };
     item = { x: 5, y: 5 };
     game();
-    console.log('reset')
-}
+    resultsHistory();
+    }
 
 window.addEventListener('keydown', action => {
     clearInterval(interval);
